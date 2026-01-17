@@ -42,9 +42,13 @@ TECHNOLOGIES USED
 PROJECT STRUCTURE
 -----------------
 index.html        -> Main portfolio page
+
 style.css         -> Styling and animations
+
 script.js         -> Particles, scroll effects, interactions
+
 guestbook.html    -> Guestbook page
+
 README.txt        -> Project information
 
 
