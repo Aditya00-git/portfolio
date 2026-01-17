@@ -2,7 +2,9 @@ PERSONAL PORTFOLIO WEBSITE
 =========================
 
 Author: Aditya Seswani
+
 Portfolio site: https://adiweb.xo.je/?i=1
+
 GitHub: https://github.com/Aditya00-git
 
 
