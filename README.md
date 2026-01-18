@@ -74,6 +74,8 @@ SECTIONS
    - NPTEL Cloud Computing
 
 4. Achievements
+   - Internship offer at ROBOKWIK.com
+   - Internship offer at EI systems Technologies
    - Reliance Foundation Undergraduate Scholar
    - Hackathon participation
    - State level football player
