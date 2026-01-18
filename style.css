@@ -516,7 +516,9 @@ footer{
   bottom:-6px;
   width:100%;
   height:1.5px;
-  background:rgb(255, 2, 2);
+  background-image: linear-gradient(to right, #be185d, #1d4ed8);
+  background-repeat: no-repeat;
+  background-position: bottom left;
   transform:scaleX(0);
   transform-origin:left;
   transition:transform 0.3s ease;
@@ -871,7 +873,7 @@ footer{
   }
 }
 .last{
-  color: #04fae5;
+  color: rgb(96 165 250);
   align-items: center;
 }
 .last{
@@ -889,14 +891,16 @@ footer{
   bottom:-6px;
   width:100%;
   height:1.5px;
-  background:rgb(2, 255, 217);
+  background-image: linear-gradient(to right, #be185d, #1d4ed8);
+  background-repeat: no-repeat;
+  background-position: bottom left;
   transform:scaleX(0);
   transform-origin:left;
   transition:transform 0.3s ease;
 }
 
 .last:hover{
-  opacity:2;
+  opacity:1;
 }
 
 .last:hover::after{
