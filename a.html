@@ -1,0 +1,66 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+<script>
+var rows=parseFloat(prompt("enter rows"));
+var cols=parseFloat(prompt("enter cols"));
+var matrix=[];
+for(var i=0;i<rows;i++){
+    matrix[i]=[];
+
+    for(var j=0;j<cols;j++){
+        matrix[i][j]=parseFloat(prompt("Enter at "+ i + j));
+    
+    }}
+var transpose=[];
+for(var i=0;i<cols;i++){
+    transpose[i]=[];
+    for(var j=0;j<rows;j++){
+        transpose[i][j]=matrix[j][i];
+    }
+}
+document.write("original"+ "<br>");
+for(var i=0;i<rows;i++){
+    for(var j=0;j<cols;j++){
+        document.write(matrix[i][j]+ " ");
+    }
+    document.write("<br>");
+}
+document.write("transpose" + "<br>")
+for(var i=0;i<cols;i++){
+    for(var j=0;j<rows;j++){
+        document.write(transpose[i][j]+ " ");
+    }
+    document.write("<br>");
+}
+</script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://placehold.co/300x80?text=A+B+C" usemap="abcmap">
+    <map name="abcmap">
+    <area shape="rect" coords="0,0,100,80" onclick="shoq('A=apple')">
+    <area shape="rect" coords="100,0,200,80" onclick="show('B=ball')">
+    <p id="display">Clicl ABC</p>
+<script>
+    function show(text){
+        document.getElementById("display").innerHTML=text;  
+    }
+</script>
+</body>
+</map>
+</html>
