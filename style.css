@@ -1084,3 +1084,24 @@ footer{
   border-color:#fff;
   transform:translateY(-2px);
 }
+
+.offer-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:12px;
+  font-size:0.95rem;
+  color:var(--text);
+  text-decoration:none;
+  opacity:0.85;
+  transition:all 0.3s ease;
+}
+
+.offer-link i{
+  color:#e63946;
+}
+
+.offer-link:hover{
+  opacity:1;
+  text-decoration:underline;
+}

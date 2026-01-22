@@ -1,14 +1,11 @@
-
 /* PARTICLES */
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
-
 function resize(){
   canvas.width=innerWidth;
   canvas.height=innerHeight;
 }
 resize(); addEventListener("resize",resize);
-
 const dots=[];
 for(let i=0;i<120;i++){
   dots.push({
@@ -19,7 +16,6 @@ for(let i=0;i<120;i++){
     vy:(Math.random()-.5)*.3
   });
 }
-
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   dots.forEach(d=>{
@@ -34,7 +30,6 @@ function animate(){
   requestAnimationFrame(animate);
 }
 animate();
-
 /* SCROLL ANIMATION */
 const reveals=document.querySelectorAll(".reveal");
 function reveal(){
@@ -49,14 +44,12 @@ addEventListener("scroll",reveal);
 reveal();
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-links a");
-
 window.addEventListener("scroll", () => {
   let current = "";
   sections.forEach(section => {
     const top = section.offsetTop - 150;
     if (pageYOffset >= top) current = section.id;
   });
-
   navLinks.forEach(link => {
     link.classList.remove("active");
     if (link.getAttribute("href") === "#" + current) {
@@ -66,25 +59,21 @@ window.addEventListener("scroll", () => {
 });
 /* MOBILE MENU TOGGLE */
 document.addEventListener("DOMContentLoaded", () => {
-
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
   const navItems = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll("section[id]");
-
   /* TOGGLE MENU */
   menuBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     navLinks.classList.toggle("show");
   });
-
   /* CLOSE ON LINK CLICK */
   navItems.forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("show");
     });
   });
-
   /* CLICK OUTSIDE TO CLOSE */
   document.addEventListener("click", (e) => {
     if (
@@ -95,18 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
       navLinks.classList.remove("show");
     }
   });
-
   /* ACTIVE LINK ON SCROLL */
   window.addEventListener("scroll", () => {
     let current = "";
-
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 160;
       if (window.scrollY >= sectionTop) {
         current = section.getAttribute("id");
       }
     });
-
     navItems.forEach(link => {
       link.classList.remove("active");
       if (link.getAttribute("href") === "#" + current) {
@@ -114,14 +100,47 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
 });
 window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY;
   const docHeight =
     document.documentElement.scrollHeight -
     document.documentElement.clientHeight;
-
   const progress = (scrollTop / docHeight) * 100;
   document.getElementById("scroll-progress").style.width = progress + "%";
 });
+const toggleBtn = document.getElementById("theme-toggle");
+const icon = toggleBtn.querySelector("i");
+
+// Load saved theme
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  document.body.className = savedTheme;
+  icon.className =
+    savedTheme === "dark" ? "fas fa-moon" : "fas fa-sun";
+}
+
+// Toggle theme
+toggleBtn.addEventListener("click", () => {
+  if (document.body.classList.contains("dark")) {
+    document.body.className = "light";
+    icon.className = "fas fa-sun";
+    localStorage.setItem("theme", "light");
+    updateParticles("light");
+  } else {
+    document.body.className = "dark";
+    icon.className = "fas fa-moon";
+    localStorage.setItem("theme", "dark");
+    updateParticles("dark");
+  }
+});
+function updateParticles(theme) {
+  if (!window.pJSDom || !pJSDom.length) return;
+
+  const color = theme === "dark" ? "#ffffff" : "#000000";
+
+  pJSDom[0].pJS.particles.color.value = color;
+  pJSDom[0].pJS.particles.line_linked.color = color;
+
+  pJSDom[0].pJS.fn.particlesRefresh();
+}
