@@ -1122,3 +1122,135 @@ footer{
     z-index: 10000;
   }
 }
+/* =============================
+   NEW PROJECT CARD LAYOUT
+============================= */
+
+.project{
+  background:#111;
+  border-radius:18px;
+  overflow:hidden;
+  transition:all 0.35s ease;
+  cursor:pointer;
+  position:relative;
+}
+
+/* keep your old hover lift */
+.project:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.6);
+}
+
+
+/* ===== IMAGE SECTION ===== */
+.project-img{
+  position:relative;
+  height:180px;
+  overflow:hidden;
+}
+
+.project-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.4s ease;
+}
+
+.project:hover .project-img img{
+  transform:scale(1.08);
+}
+
+
+/* ===== OVERLAY ===== */
+.project-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+
+  opacity:0;
+  transition:0.3s ease;
+}
+
+.project:hover .project-overlay{
+  opacity:1;
+}
+
+/* buttons */
+.project-overlay a{
+  padding:10px 18px;
+  border:1px solid white;
+  border-radius:999px;
+  color:white;
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:0.25s;
+}
+
+.project-overlay a:hover{
+  background:white;
+  color:black;
+}
+
+
+/* ===== BOTTOM INFO ===== */
+.project-info{
+  padding:18px;
+  background:#000;
+}
+
+.project-info h3{
+  margin-bottom:12px;
+}
+
+
+/* ===== TECH TAGS ===== */
+.tech-stack{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.tech-stack span{
+  background:rgba(255,255,255,0.12);
+  padding:5px 10px;
+  border-radius:999px;
+  font-size:0.8rem;
+}
+/* VIDEO PREVIEW */
+.project-img video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.4s ease;
+}
+
+.project:hover .project-img video{
+  transform:scale(1.08);
+}
+
+
+/* ICON BUTTONS */
+.project-overlay a{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:1.2rem;
+  color:white;
+  transition:0.25s;
+}
+
+.project-overlay a:hover{
+  background:white;
+  color:black;
+}
