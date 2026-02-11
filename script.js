@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* PARTICLES */
+>>>>>>> f9d6b1bcdae6581ae611d932f27aabf25feb2030
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 function resize(){
@@ -29,6 +33,10 @@ function animate(){
   requestAnimationFrame(animate);
 }
 animate();
+<<<<<<< HEAD
+=======
+/* SCROLL ANIMATION */
+>>>>>>> f9d6b1bcdae6581ae611d932f27aabf25feb2030
 const reveals=document.querySelectorAll(".reveal");
 function reveal(){
   const trigger=innerHeight*0.85;
@@ -55,6 +63,10 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+<<<<<<< HEAD
+=======
+/* MOBILE MENU TOGGLE */
+>>>>>>> f9d6b1bcdae6581ae611d932f27aabf25feb2030
 document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
