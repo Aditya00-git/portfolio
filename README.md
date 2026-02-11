@@ -4,6 +4,7 @@ PERSONAL PORTFOLIO WEBSITE
 Author: Aditya Seswani
 
 Portfolio site: https://adiweb.xo.je/?i=1
+                https://adiiweb.netlify.app
 
 GitHub: https://github.com/Aditya00-git
 
