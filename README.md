@@ -3,8 +3,10 @@ PERSONAL PORTFOLIO WEBSITE
 
 Author: Aditya Seswani
 
-Portfolio site: https://adiweb.xo.je/?i=1
-                https://adiiweb.netlify.app
+Portfolio site1: https://adiweb.xo.je/?i=1
+
+Portfolio site2: https://adiiweb.netlify.app
+
 
 GitHub: https://github.com/Aditya00-git
 
