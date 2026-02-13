@@ -105,5 +105,4 @@ Instagram: https://tinyurl.com/hy78vev2
 
 LICENSE
 -------
-This project is open-source and free to use.
-You may fork, modify, and use it for your own portfolio.
+MIT LICENSE
