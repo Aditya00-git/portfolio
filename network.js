@@ -105,3 +105,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+const form = document.getElementById("contactForm");
+if(form){
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    const button = form.querySelector(".form-button");
+    button.innerHTML = "Sending...";
+    button.disabled = true;
+    setTimeout(() => {
+      button.innerHTML = "✓ Message Sent";
+      button.classList.add("success");
+      form.reset();
+      setTimeout(() => {
+        button.innerHTML = "Send Message";
+        button.disabled = false;
+        button.classList.remove("success");
+      }, 3000);
+    }, 1200);
+  });
+}
