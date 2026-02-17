@@ -73,3 +73,35 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+/* =========================
+   MOBILE MENU FIX
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+  const navItems = document.querySelectorAll(".nav-link");
+
+  if (!menuBtn || !navLinks) return;
+
+  menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle("show");
+  });
+
+  navItems.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      navLinks.classList.contains("show") &&
+      !navLinks.contains(e.target) &&
+      !menuBtn.contains(e.target)
+    ) {
+      navLinks.classList.remove("show");
+    }
+  });
+});
