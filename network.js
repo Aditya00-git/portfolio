@@ -105,22 +105,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-const form = document.getElementById("contactForm");
-if(form){
-  form.addEventListener("submit", function(e){
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
+
     const button = form.querySelector(".form-button");
     button.innerHTML = "Sending...";
     button.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        button.innerHTML = "✓ Message Sent";
+        button.classList.add("success");
+        form.reset();
+      } else {
+        button.innerHTML = "Error. Try Again";
+        button.style.background = "#ef4444";
+      }
+    } catch (error) {
+      button.innerHTML = "Network Error";
+      button.style.background = "#ef4444";
+    }
+
     setTimeout(() => {
-      button.innerHTML = "✓ Message Sent";
-      button.classList.add("success");
-      form.reset();
-      setTimeout(() => {
-        button.innerHTML = "Send Message";
-        button.disabled = false;
-        button.classList.remove("success");
-      }, 3000);
-    }, 1200);
+      button.innerHTML = "Send Message";
+      button.disabled = false;
+      button.classList.remove("success");
+      button.style.background = "";
+    }, 3000);
   });
-}
+});
