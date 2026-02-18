@@ -73,9 +73,7 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
-/* =========================
-   MOBILE MENU FIX
-========================= */
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
@@ -156,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-// ===== PREMIUM HERO TYPING =====
 document.addEventListener("DOMContentLoaded", () => {
   const el = document.querySelector(".typing-text");
   if (!el) return;
@@ -191,10 +188,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(type, deleting ? 40 : 60);
   }
-
   type();
 });
-// ===== EXPERIENCE STAGGER REVEAL =====
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".reveal-card");
   cards.forEach((card, i) => {
