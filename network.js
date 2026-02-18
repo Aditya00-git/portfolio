@@ -146,3 +146,64 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".nav-link");
+  const current = window.location.pathname.split("/").pop();
+
+  links.forEach(link => {
+    if (link.getAttribute("href") === current) {
+      link.classList.add("active");
+    }
+  });
+});
+// ===== PREMIUM HERO TYPING =====
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.querySelector(".typing-text");
+  if (!el) return;
+
+  const words = [
+    "intelligent digital systems",
+    "scalable backend architectures",
+    "AI-powered applications"
+  ];
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function type() {
+    const current = words[wordIndex];
+
+    if (!deleting) {
+      el.textContent = current.substring(0, charIndex++);
+      if (charIndex > current.length) {
+        deleting = true;
+        setTimeout(type, 1400);
+        return;
+      }
+    } else {
+      el.textContent = current.substring(0, charIndex--);
+      if (charIndex < 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    }
+
+    setTimeout(type, deleting ? 40 : 60);
+  }
+
+  type();
+});
+// ===== EXPERIENCE STAGGER REVEAL =====
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".reveal-card");
+  cards.forEach((card, i) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px)";
+    setTimeout(() => {
+      card.style.transition = "all 0.6s ease";
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, i * 250);
+  });
+});
