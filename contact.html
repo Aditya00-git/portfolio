@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Aditya Seswani</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-jpg" href="git1.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="dark">
+
+<!-- NETWORK BACKGROUND -->
+<canvas id="network-bg"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">Aditya</div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="projects.html" class="nav-link">Projects</a></li>
+      <li><a href="experience.html" class="nav-link">Experience</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="guestbook.html" class="nav-link">Guestbook</a></li>
+    </ul>
+
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </div>
+</nav>
+<section id="contact" class="section container reveal">
+  <div class="update">
+    <h4 class="head4">Get in Touch</h4>
+    <h2>Connect with me</h2>
+    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
+  </div>
+  <div class="hero-socials fade-up delay-3 ">
+      <a href="https://x.com/AdityaSeswani" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://github.com/Aditya00-git" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://tinyurl.com/35u8nepx" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://tinyurl.com/hy78vev2" target="_blank"><i class="fab fa-instagram"></i></a>
+       <a href="Adiii.pdf"  download> <i class="fas fa-file-alt"></i>
+      <span class="resume-icon"></span>
+      </a>
+  </div>
+  <div class="contact-form-section">
+    <form id="contactForm"
+        action="https://formspree.io/f/xvzbryvq"
+        method="POST"
+        class="contact-form">
+
+      <h2>Send me a message</h2>
+      <div class="form-group">
+        <input type="text" name="name" required placeholder="Your Name">
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" required placeholder="Your Email">
+      </div>
+      <div class="form-group">
+        <input type="text" name="subject" required placeholder="Project Collaboration">
+      </div>
+      <div class="form-group">
+        <textarea name="message" rows="6"
+          required placeholder="Tell about your project"></textarea>
+      </div>
+      <button type="submit" class="form-button">
+        Send Message
+      </button>
+    </form>
+  </div>
+  <footer>
+   Made by ❤️ <a class="last" href="https://github.com/Aditya00-git">Aditya Seswani</a>
+</footer>
+  <script src="network.js"></script>
+
+</section>
+</body>
