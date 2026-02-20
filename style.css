@@ -2039,17 +2039,93 @@ nav{
   font-weight: 600;
   font-size: 0.8rem;
 }
-.timeline {
-  position: relative;
-  padding-left: 40px;
+.menu-toggle {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 9999;
 }
-
-.timeline-line {
+.menu-toggle span {
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+.fullscreen-menu {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9998;
+}
+.fullscreen-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.menu-close {
   position: absolute;
-  left: 10px;
+  top: 30px;
+  right: 40px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+}
+.menu-links a {
+  font-size: 3rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.menu-links a:hover {
+  color: #ff2c91;
+  text-shadow: 0 0 20px #ff2c91;
+}
+@media (max-width: 768px){
+  .menu-links a {
+    font-size: 2.2rem;
+  }
+  .menu-close {
+    right: 25px;
+    font-size: 1.8rem;
+  }
+}
+.mouse-glow {
+  position: fixed;
   top: 0;
-  width: 2px;
-  height: 0;
-  background: linear-gradient(to bottom,#00e0ff,#8b5cf6);
-  transition: height 0.3s ease;
+  left: 0;
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.35) 0%,
+    rgba(255,255,255,0.2) 30%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  transform: translate(-50%, -50%);
+  z-index: 0;   
 }
