@@ -73,28 +73,20 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
-/* =========================
-   MOBILE MENU FIX
-========================= */
-
 document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
   const navItems = document.querySelectorAll(".nav-link");
-
   if (!menuBtn || !navLinks) return;
-
   menuBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     navLinks.classList.toggle("show");
   });
-
   navItems.forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("show");
     });
   });
-
   document.addEventListener("click", (e) => {
     if (
       navLinks.classList.contains("show") &&
@@ -108,14 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
   if (!form) return;
-
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
-
     const button = form.querySelector(".form-button");
     button.innerHTML = "Sending...";
     button.disabled = true;
-
     try {
       const response = await fetch(form.action, {
         method: "POST",
@@ -124,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
           Accept: "application/json",
         },
       });
-
       if (response.ok) {
         button.innerHTML = "✓ Message Sent";
         button.classList.add("success");
@@ -137,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
       button.innerHTML = "Network Error";
       button.style.background = "#ef4444";
     }
-
     setTimeout(() => {
       button.innerHTML = "Send Message";
       button.disabled = false;
@@ -149,31 +136,25 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav-link");
   const current = window.location.pathname.split("/").pop();
-
   links.forEach(link => {
     if (link.getAttribute("href") === current) {
       link.classList.add("active");
     }
   });
 });
-// ===== PREMIUM HERO TYPING =====
 document.addEventListener("DOMContentLoaded", () => {
   const el = document.querySelector(".typing-text");
   if (!el) return;
-
   const words = [
     "intelligent digital systems",
     "scalable backend architectures",
     "AI-powered applications"
   ];
-
   let wordIndex = 0;
   let charIndex = 0;
   let deleting = false;
-
   function type() {
     const current = words[wordIndex];
-
     if (!deleting) {
       el.textContent = current.substring(0, charIndex++);
       if (charIndex > current.length) {
@@ -188,13 +169,10 @@ document.addEventListener("DOMContentLoaded", () => {
         wordIndex = (wordIndex + 1) % words.length;
       }
     }
-
     setTimeout(type, deleting ? 40 : 60);
   }
-
   type();
 });
-// ===== EXPERIENCE STAGGER REVEAL =====
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".reveal-card");
   cards.forEach((card, i) => {
@@ -207,36 +185,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }, i * 250);
   });
 });
-// ===== TIMELINE SCROLL ANIMATION =====
-document.addEventListener("scroll", () => {
-  const timeline = document.querySelector(".timeline");
-  const line = document.querySelector(".timeline-line");
-
-  if (!timeline || !line) return;
-
-  const rect = timeline.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
-
-  const visible = Math.min(
-    Math.max(windowHeight - rect.top, 0),
-    rect.height
-  );
-
-  line.style.height = visible + "px";
-});
-// ===== SCROLL REVEAL =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("fullscreenMenu");
+  const close = document.getElementById("menuClose");
+  toggle.addEventListener("click", () => {
+    menu.classList.add("active");
   });
-}, { threshold: 0.2 });
-
-document.querySelectorAll(".reveal-card").forEach(card => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(40px)";
-  card.style.transition = "all 0.7s ease";
-  observer.observe(card);
+  close.addEventListener("click", () => {
+    menu.classList.remove("active");
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const glow = document.querySelector(".mouse-glow");
+  if (!glow) return;
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+  function animate() {
+    currentX += (mouseX - currentX) * 0.35;
+    currentY += (mouseY - currentY) * 0.35;
+    glow.style.left = currentX + "px";
+    glow.style.top = currentY + "px";
+    requestAnimationFrame(animate);
+  }
+  animate();
 });
