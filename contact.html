@@ -4,33 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | Aditya Seswani</title>
-
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/x-jpg" href="git1.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body class="dark">
-
-<!-- NETWORK BACKGROUND -->
 <canvas id="network-bg"></canvas>
+<div class="menu-toggle" id="menuToggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div class="fullscreen-menu" id="fullscreenMenu">
+  <div class="menu-close" id="menuClose">✕</div>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-container">
-    <div class="logo">Aditya</div>
-
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="projects.html" class="nav-link">Projects</a></li>
-      <li><a href="experience.html" class="nav-link">Experience</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-      <li><a href="guestbook.html" class="nav-link">Guestbook</a></li>
-    </ul>
-
-    <div class="menu-btn" id="menuBtn">☰</div>
+  <div class="menu-links">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="experience.html">Experience</a>
+    <a href="contact.html">Contact</a>
+    <a href="guestbook.html">Guestbook</a>
   </div>
-</nav>
+</div>
 <section id="contact" class="section container reveal">
   <div class="update">
     <h4 class="head4">Get in Touch</h4>
@@ -51,7 +46,6 @@
         action="https://formspree.io/f/xvzbryvq"
         method="POST"
         class="contact-form">
-
       <h2>Send me a message</h2>
       <div class="form-group">
         <input type="text" name="name" required placeholder="Your Name">
@@ -74,7 +68,7 @@
   <footer>
    Made by ❤️ <a class="last" href="https://github.com/Aditya00-git">Aditya Seswani</a>
 </footer>
-  <script src="network.js"></script>
-
+<script src="network.js"></script>
+<div class="mouse-glow"></div>
 </section>
 </body>
