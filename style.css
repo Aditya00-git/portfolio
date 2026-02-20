@@ -2039,3 +2039,17 @@ nav{
   font-weight: 600;
   font-size: 0.8rem;
 }
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom,#00e0ff,#8b5cf6);
+  transition: height 0.3s ease;
+}
