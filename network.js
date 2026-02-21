@@ -39,8 +39,8 @@ function connect() {
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < CONNECT_DISTANCE) {
         const opacity = 1 - dist / CONNECT_DISTANCE;
-        ctx.shadowColor = "#00ffff";
-        ctx.strokeStyle = `rgba(0,255,255,${opacity})`;
+        ctx.shadowColor = "#00ddff";
+        ctx.strokeStyle = `rgba(0,255,255,${opacity * 0.8})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
@@ -191,9 +191,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const close = document.getElementById("menuClose");
   toggle.addEventListener("click", () => {
     menu.classList.add("active");
+    document.body.classList.add("menu-open");
   });
   close.addEventListener("click", () => {
     menu.classList.remove("active");
+    document.body.classList.remove("menu-open");
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
@@ -215,4 +217,40 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
   }
   animate();
+});
+let lastScroll = 0;
+const header = document.querySelector(".top-bar");
+let isHidden = false;
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > lastScroll && currentScroll > 80) {
+    if (!isHidden) {
+      header.classList.add("step-down");
+      setTimeout(() => {
+        header.classList.remove("step-down");
+        header.classList.add("hide");
+      }, 150);
+      isHidden = true;
+    }
+  } else {
+    if (isHidden) {
+      header.classList.remove("hide");
+      header.classList.add("step-down");
+      setTimeout(() => {
+        header.classList.remove("step-down");
+      }, 150);
+      isHidden = false;
+    }
+  }
+  lastScroll = currentScroll;
+});
+window.addEventListener("click", e => {
+  if (document.body.classList.contains("menu-open")) return;
+
+  for (let i = 0; i < 8; i++) {
+    const p = new Particle(e.clientX, e.clientY);
+    p.vx = (Math.random() - 0.5) * 4;
+    p.vy = (Math.random() - 0.5) * 4;
+    particles.push(p);
+  }
 });
