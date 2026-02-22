@@ -1,3 +1,6 @@
+* {
+  max-width: 100%;
+}
 *{
   margin:0;padding:0;box-sizing:border-box;
   font-family:Inter,system-ui,sans-serif;
@@ -6,6 +9,7 @@ body{
   background:#000;
   color:#eaeaea;
   padding-top: 70px;
+  overflow-x: hidden;
 }
 nav{
   position:fixed;
@@ -143,7 +147,10 @@ footer{
 .hero-socials{
   margin-top:34px;
   display:flex;
-  gap:22px;
+  gap:18px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:nowrap;
 }
 .hero-socials a{
   width:52px;
@@ -464,7 +471,7 @@ footer{
   padding-top: 160px;
 }
 .guestbook-title {
-  font-size: 3.0rem;
+  font-size: clamp(1.8rem, 6vw, 3rem);
   margin-bottom: 10px;
 }
 .guestbook-sub {
@@ -784,7 +791,7 @@ footer{
   opacity:0.8;
   transition:opacity 0.25s ease;
   gap:54px;
-  font-size:1.45rem;
+  font-size: clamp(1rem, 4vw, 1.45rem);
 }
 .currently-list li::after{
   content:"";
@@ -1253,22 +1260,23 @@ nav{
   max-width:720px;
 }
 .hero-intro{
-  font-size:2rem;
+  font-size: clamp(1rem, 4vw, 2rem);
   opacity:0.6;
   letter-spacing:1px;
   margin-top:10px;
 }
 .hero-name{
-  font-size:10.5rem;
+  font-size: clamp(2.4rem, 9vw, 10.5rem);
   font-weight:1000;
   line-height:1.05;
   letter-spacing:-1px;
+  word-break: break-word;
 }
 .hero-name span{
   color:#00e0ff;
 }
 .hero-tagline{
-  font-size:1.9rem;
+  font-size: clamp(1rem, 4.5vw, 1.9rem);
   margin-top:18px;
   font-weight:500;
 }
@@ -1465,25 +1473,11 @@ nav{
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 60px;
+    gap: 40px;
   }
+
   .hero-right {
-    justify-content: center;
-  }
-  .image-container {
-    width: 280px;
-    height: 340px;
-  }
-  .image-border {
-    top: 15px;
-    left: 15px;
-  }
-  .image-container:hover .profile-img {
-    transform: translate(-6px, -6px);
-  }
-  .image-container:hover .image-border {
-    top: 8px;
-    left: 8px;
+    display: none;
   }
 }
 @media (max-width: 480px) {
@@ -1603,16 +1597,15 @@ nav{
   opacity: 0.8;
 }
 .hero-socials {
-  margin-right: 30px;
   margin-top: 40px;
-  padding:14px 28px;
-
+  padding: 14px 0;
   display: flex;
-  justify-content: left;   
+  justify-content: flex-start;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
+
 .hero-socials a {
   width: 60px;
   height: 60px;
@@ -1919,6 +1912,10 @@ nav{
   border-radius: 3px;
   transition: 0.3s ease;
 }
+body.menu-open .menu-toggle{
+  opacity: 0;
+  pointer-events: none;
+}
 .fullscreen-menu {
   position: fixed;
   inset: 0;
@@ -1974,6 +1971,17 @@ nav{
     right: 25px;
     font-size: 1.8rem;
   }
+  .menu-toggle{
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    left: auto;
+    transform: none;
+  }
+  body.menu-open .menu-toggle{
+  opacity: 0;
+  pointer-events: none;
+}
 }
 .mouse-glow {
   position: fixed;
@@ -2095,37 +2103,41 @@ body.menu-open .header-cta{
   transition: 0.3s ease;
 }
 .about-hero{
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 8%;
+  padding: 160px 8% 80px;
   position: relative;
 }
 .about-container{
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: 80px;
-  align-items: center;
+  align-items: start;
   width: 100%;
 }
 .about-image{
   position: relative;
-  margin-left: 80px;
-  border-radius: 30px;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 .about-image img{
-  width: 100%;
-  border-radius: 50px;
-  transition: 0.5s ease;
+  width: 380px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 251, 255, 0.6);
+  transition: transform 0.4s ease;
+}
+.about-image img:hover{
+  transform: scale(1.03);
 }
 .about-image::after{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at 30% 30%,
+  /* background:radial-gradient(circle at 30% 30%,
   rgba(38, 94, 111, 0.574),
-  transparent 70%);
+  transparent 70%); */
   pointer-events:none;
 }
 .about-right h1{
@@ -2188,12 +2200,22 @@ body.menu-open .header-cta{
     text-align:center;
   }
   .about-image{
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    border-radius: 20px;
+    justify-content:center;
+    align-items:flex-start;
+    margin-top:-90px;
+  }
+  .about-image img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 25px;
   }
   .about-stats{
     justify-content:center;
   }
+
 }
 .top-bar{
   position: fixed;
@@ -2305,6 +2327,9 @@ body.menu-open .header-cta{
   }
 }
 @media (max-width: 768px){
+  .header-cta{
+  display: none;
+}
   .transition-text{
     font-size: 1.3rem;
     letter-spacing: 2px;
@@ -2339,13 +2364,15 @@ body.menu-open .header-cta{
   to { transform: scale(1.1); opacity: 1; }
 }
 #intro-text {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 8vw, 3.5rem);
   font-weight: 700;
-  letter-spacing: 6px;
+  letter-spacing: clamp(2px, 1vw, 6px);
   text-transform: uppercase;
   color: white;
   position: relative;
   opacity: 0;
+  white-space: nowrap;
+  text-align: center;
 }
 .animate-text {
   animation: premiumReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -2369,5 +2396,70 @@ body.menu-open .header-cta{
   to {
     opacity: 0;
     visibility: hidden;
+  }
+}
+body {
+  overflow-x: hidden;
+}
+h1, h2, h3, p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.certificate-actions{
+  display: none;
+}
+@media (max-width: 768px){
+  .certificate-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .certificate-card{
+    padding: 18px;
+    border-radius: 18px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .certificate-img{
+    display: none;
+  }
+  .certificate-info{
+    padding: 0;
+    background: transparent;
+  }
+  .certificate-info h3{
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .certificate-info p{
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 14px;
+  }
+  .certificate-card::after{
+    content: "";
+    display: block;
+  }
+  .certificate-actions{
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .certificate-actions a{
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    transition: 0.3s ease;
+  }
+  .certificate-actions a:hover{
+    background: linear-gradient(90deg,#00e0ff,#8b5cf6);
+    color: black;
+    border-color: transparent;
   }
 }
