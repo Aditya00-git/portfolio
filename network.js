@@ -74,6 +74,7 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight;
 });
 document.addEventListener("DOMContentLoaded", () => {
+  
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
   const navItems = document.querySelectorAll(".nav-link");
@@ -97,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
   if (!form) return;
@@ -253,4 +255,34 @@ window.addEventListener("click", e => {
     p.vy = (Math.random() - 0.5) * 4;
     particles.push(p);
   }
+});
+document.addEventListener("DOMContentLoaded", () => {
+
+  const transition = document.getElementById("page-transition");
+  const transitionText = document.querySelector(".transition-text");
+  const messages = {
+    "index.html": "Welcome.",
+    "about.html": "About Me",
+    "projects.html": "Have a look at my projects.",
+    "experience.html": "Explore my experience.",
+    "contact.html": "Let’s connect.",
+    "guestbook.html": "Drop a comment on giscuss."
+  };
+const isMobile = window.innerWidth <= 768;
+  document.querySelectorAll("a").forEach(link => {
+    if(link.hostname === window.location.hostname){
+      link.addEventListener("click", function(e){
+        e.preventDefault();
+        const href = this.getAttribute("href");
+        if(!href || href.startsWith("#")) return;
+        const file = href.split("/").pop();
+        transitionText.textContent = messages[file] || "Loading...";
+        transition.classList.add("active");
+        const delay = isMobile ? 1200 : 1700;
+        setTimeout(() => {
+          window.location.href = href;
+        }, delay);
+      });
+    }
+  });
 });
