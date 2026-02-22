@@ -223,29 +223,31 @@ document.addEventListener("DOMContentLoaded", () => {
 let lastScroll = 0;
 const header = document.querySelector(".top-bar");
 let isHidden = false;
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > lastScroll && currentScroll > 80) {
-    if (!isHidden) {
-      header.classList.add("step-down");
-      setTimeout(() => {
-        header.classList.remove("step-down");
-        header.classList.add("hide");
-      }, 150);
-      isHidden = true;
+if (header) {
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 80) {
+      if (!isHidden) {
+        header.classList.add("step-down");
+        setTimeout(() => {
+          header.classList.remove("step-down");
+          header.classList.add("hide");
+        }, 150);
+        isHidden = true;
+      }
+    } else {
+      if (isHidden) {
+        header.classList.remove("hide");
+        header.classList.add("step-down");
+        setTimeout(() => {
+          header.classList.remove("step-down");
+        }, 150);
+        isHidden = false;
+      }
     }
-  } else {
-    if (isHidden) {
-      header.classList.remove("hide");
-      header.classList.add("step-down");
-      setTimeout(() => {
-        header.classList.remove("step-down");
-      }, 150);
-      isHidden = false;
-    }
-  }
-  lastScroll = currentScroll;
-});
+    lastScroll = currentScroll;
+  });
+}
 window.addEventListener("click", e => {
   if (document.body.classList.contains("menu-open")) return;
   for (let i = 0; i < 8; i++) {
@@ -258,23 +260,20 @@ window.addEventListener("click", e => {
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("intro-loader");
   const introText = document.getElementById("intro-text");
-
+  if (!loader || !introText) return;
   if (sessionStorage.getItem("introShown")) {
     loader.style.display = "none";
     return;
   }
-
   const sequence = [
     "ENGINEERING",
     "INTELLIGENCE",
     "SCALABILITY",
     "INNOVATION",
-    "Automation",
+    "AUTOMATION",
     "ADITYA SESWANI"
   ];
-
   let index = 0;
-
   function showNext() {
     if (index < sequence.length) {
       introText.textContent = sequence[index];
@@ -290,7 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }
   }
-
   setTimeout(showNext, 800);
 });
 document.addEventListener("DOMContentLoaded", () => {
