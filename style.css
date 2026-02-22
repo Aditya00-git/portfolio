@@ -2077,7 +2077,7 @@ html, body {
 }
 .btn-primary1:hover{
   transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(44, 227, 255, 0.6);
+  box-shadow:0 0 25px rgba(44, 255, 216, 0.4);
 }
 @media (max-width: 768px){
   .header-cta{
@@ -2158,8 +2158,8 @@ body.menu-open .header-cta{
 }
 .stat-card:hover{
   transform: translateY(-5px);
-  border-color:#ff2c91;
-  box-shadow:0 0 25px rgba(255,44,145,0.4);
+  border-color:#00eeff;
+  box-shadow:0 0 25px rgba(44, 255, 216, 0.4);
 }
 .stat-card span{
   font-size:0.8rem;
@@ -2180,7 +2180,7 @@ body.menu-open .header-cta{
 }
 .about-btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 0 30px rgba(255,44,145,0.6);
+  box-shadow:0 0 25px rgb(0, 255, 208);
 }
 @media (max-width: 900px){
   .about-container{
@@ -2243,8 +2243,8 @@ body.menu-open .header-cta{
   margin-top: 80px;
   text-align: center;
 }
-.github-section h3{
-  font-size: 1.5rem;
+.github-section h2{
+  font-size: 2.5rem;
   margin-bottom: 30px;
   color: #2cf4ff;
 }
@@ -2259,18 +2259,48 @@ body.menu-open .header-cta{
 }
 .github-heatmap:hover{
   transform: translateY(-5px);
-  border:1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 30px rgba(255, 44, 209, 0.3);
+  border:1px solid #00eeff;
+  box-shadow:0 0 25px rgba(44, 255, 216, 0.4);
 }
 .github-heatmap img{
   max-width: 100%;
   filter: brightness(1.2);
 }
+#intro-loader{
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 20000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+#intro-loader.fade-out{
+  opacity: 0;
+  visibility: hidden;
+}
+.intro-content h1{
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  position: relative;
+}
+.intro-content h1::after{
+  content: "|";
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+@keyframes blink{
+  0%, 50%, 100%{ opacity: 1; }
+  25%, 75%{ opacity: 0; }
+}
 #page-transition{
   position: fixed;
   inset: 0;
   background: #000;
-  z-index: 30000;
+  z-index: 999999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2280,17 +2310,20 @@ body.menu-open .header-cta{
 }
 #page-transition.active{
   opacity: 1;
-  visibility: visible;
+  visibility: visible;  
 }
 .transition-text{
   color: white;
   font-weight: 400;
   letter-spacing: 4px;
   text-align: center;
-
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease;
+}
+#page-transition.active .transition-text{
+  opacity: 1;
+  transform: translateY(0);
 }
 @media (min-width: 769px){
   .transition-text{
