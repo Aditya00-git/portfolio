@@ -248,7 +248,6 @@ window.addEventListener("scroll", () => {
 });
 window.addEventListener("click", e => {
   if (document.body.classList.contains("menu-open")) return;
-
   for (let i = 0; i < 8; i++) {
     const p = new Particle(e.clientX, e.clientY);
     p.vx = (Math.random() - 0.5) * 4;
@@ -257,7 +256,29 @@ window.addEventListener("click", e => {
   }
 });
 document.addEventListener("DOMContentLoaded", () => {
-
+  const loader = document.getElementById("intro-loader");
+  if (sessionStorage.getItem("introShown")) {
+    loader.style.display = "none";
+    return;
+  }
+  const text = "Hello, welcome to my world.";
+  const introText = document.getElementById("intro-text");
+  let index = 0;
+  function type() {
+    if (index < text.length) {
+      introText.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 60);
+    } else {
+      setTimeout(() => {
+        loader.classList.add("fade-out");
+        sessionStorage.setItem("introShown", "true");
+      }, 800);
+    }
+  }
+  setTimeout(type, 600);
+});
+document.addEventListener("DOMContentLoaded", () => {
   const transition = document.getElementById("page-transition");
   const transitionText = document.querySelector(".transition-text");
   const messages = {
