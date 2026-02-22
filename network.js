@@ -257,36 +257,51 @@ window.addEventListener("click", e => {
 });
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("intro-loader");
+  const introText = document.getElementById("intro-text");
+
   if (sessionStorage.getItem("introShown")) {
     loader.style.display = "none";
     return;
   }
-  const text = "Hello, welcome to my world.";
-  const introText = document.getElementById("intro-text");
+
+  const sequence = [
+    "ENGINEERING",
+    "INTELLIGENCE",
+    "SCALABILITY",
+    "INNOVATION",
+    "Automation",
+    "ADITYA SESWANI"
+  ];
+
   let index = 0;
-  function type() {
-    if (index < text.length) {
-      introText.textContent += text.charAt(index);
+
+  function showNext() {
+    if (index < sequence.length) {
+      introText.textContent = sequence[index];
+      introText.classList.remove("animate-text");
+      void introText.offsetWidth;
+      introText.classList.add("animate-text");
       index++;
-      setTimeout(type, 60);
+      setTimeout(showNext, 900);
     } else {
       setTimeout(() => {
-        loader.classList.add("fade-out");
+        loader.classList.add("loader-exit");
         sessionStorage.setItem("introShown", "true");
-      }, 800);
+      }, 1000);
     }
   }
-  setTimeout(type, 600);
+
+  setTimeout(showNext, 800);
 });
 document.addEventListener("DOMContentLoaded", () => {
   const transition = document.getElementById("page-transition");
   const transitionText = document.querySelector(".transition-text");
   const messages = {
-    "index.html": "Welcome.",
-    "about.html": "About Me",
-    "projects.html": "Have a look at my projects.",
-    "experience.html": "Explore my experience.",
-    "contact.html": "Let’s connect.",
+    "index.html": "Welcome to home.",
+    "about.html": "About Me.",
+    "projects.html": "Wanna know what i build, Have a look.",
+    "experience.html": "My Experience and Achivements.",
+    "contact.html": "Wanna Discuss something, Let's connect.",
     "guestbook.html": "Drop a comment on giscuss."
   };
 const isMobile = window.innerWidth <= 768;
