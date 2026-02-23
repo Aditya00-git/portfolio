@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "SCALABILITY",
     "INNOVATION",
     "AUTOMATION",
-    "ADITYA SESWANI"
+    "Welcome to my world"
   ];
   let index = 0;
   function showNext() {
